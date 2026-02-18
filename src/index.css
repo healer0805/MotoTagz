@@ -5,6 +5,14 @@
   --dark-text-color: #1a1a1a;
   --primary-button-hover-bg-color: rgb(193, 0, 0);
   --primary-button-text-color: #ffffff;
+  --dark-background-color: #1a0a0a;
+  --accent-color: #dc0000;
+  --accent2-color: rgb(193, 0, 0);
+  --accent3-color: #a01830;
+  --gray-text-color: #4b5563;
+  --light-background-color: #f3f4f6;
+  --light-border-color: #e5e7eb;
+  --medium-background-color: #e5e7eb;
 }
 
 @layer base {
