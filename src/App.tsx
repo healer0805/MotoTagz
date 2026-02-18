@@ -5,7 +5,6 @@ import AboutUs from './pages/AboutUs';
 import Features from './pages/Features';
 import HowItWorks from './pages/HowItWorks';
 import Blog from './pages/Blog';
-import './App.css';
 
 function App() {
   return (

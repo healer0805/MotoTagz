@@ -1,9 +1,9 @@
 export default function Home() {
   return (
-    <main>
-      <section className="hero">
-        <h1>MotoTagz</h1>
-        <p className="tagline">
+    <main className="max-w-6xl mx-auto px-6 py-8 min-h-[60vh]">
+      <section className="text-center py-12 px-4">
+        <h1 className="text-4xl font-bold leading-tight">MotoTagz</h1>
+        <p className="text-xl my-4">
           Automatic crash detection and emergency response for motorcycle riders.
         </p>
         <p>
