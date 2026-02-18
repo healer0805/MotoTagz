@@ -1,73 +1,106 @@
-# React + TypeScript + Vite
+# MotoTagz
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Automatic crash detection and emergency response for motorcycle riders.**  
+Detects accidents in real time and alerts emergency contacts when the rider can't call for help.  
+*Ride confident — help arrives when you need it most.*
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## About
 
-## React Compiler
+MotoTagz is a first-of-its-kind motorcycle protection app. It uses smart sensors and instant alerts so that if you can't call for help, the app does it for you. The website presents the product, features, and how it works for riders and their families.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- **React 19** + **TypeScript**
+- **Vite 7** (build & dev server)
+- **React Router 7** (routing)
+- **Tailwind CSS 4** (styling)
+- **Font Awesome** (solid + brands icons)
+- **ESLint** (linting)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Getting Started
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Prerequisites
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- Node.js (v18+ recommended)
+- npm
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Install
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+Runs the app at **http://localhost:3030** (or the next available port).
+
+### Build
+
+```bash
+npm run build
+```
+
+Output is in `dist/`. Use a static host or any Node server to serve it.
+
+### Preview production build
+
+```bash
+npm run preview
+```
+
+### Lint
+
+```bash
+npm run lint
+```
+
+## Project Structure
+
+```
+src/
+├── components/
+│   └── Layout.tsx       # Header (navbar + mobile menu), footer
+├── pages/
+│   ├── Home.tsx         # Landing: hero, how it works, features, CTA, etc.
+│   ├── AboutUs.tsx
+│   ├── Features.tsx
+│   ├── HowItWorks.tsx
+│   └── Blog.tsx
+├── App.tsx              # Routes
+├── main.tsx
+└── index.css            # Tailwind + CSS variables (theme colors)
+public/
+├── img/                 # Images (e.g. homeBg.jfif, publicContain.jfif)
+└── logo.png             # Site logo
+```
+
+## Routes
+
+| Path            | Page        |
+|-----------------|------------|
+| `/`             | Home       |
+| `/about`        | About Us   |
+| `/features`     | Features   |
+| `/how-it-works` | How It Works |
+| `/blog`         | Blog       |
+
+## Theme (CSS Variables)
+
+Defined in `src/index.css`:
+
+- `--primary-color` – main brand red
+- `--dark-text-color`, `--gray-text-color`
+- `--dark-background-color`, `--light-background-color`
+- `--accent-color`, `--accent2-color`, `--accent3-color`
+- `--primary-button-text-color`, `--primary-button-hover-bg-color`
+- `--light-border-color`, `--medium-background-color`
+
+## License
+
+Private. © 2026 MotoTagz LLC. All rights reserved.
