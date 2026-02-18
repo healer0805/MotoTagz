@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Outlet, NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -6,6 +7,7 @@ import {
   faPhone,
   faMobileScreen,
   faShieldAlt,
+  faBars,
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faFacebookF,
@@ -24,13 +26,16 @@ const navItems = [
 ];
 
 export default function Layout() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <>
       <header className="bg-white border-b border-black/10">
-        <nav className="flex justify-between items-center max-w-7xl mx-auto gap-6 h-28 px-8">
+        <nav className="flex justify-between items-center max-w-7xl mx-auto gap-6 h-28 px-4 sm:px-6 lg:px-8">
           <NavLink
             to="/"
             className="flex flex-col items-start no-underline text-inherit"
+            onClick={() => setIsMenuOpen(false)}
           >
             <img
               src="logo.jfif"
@@ -38,15 +43,16 @@ export default function Layout() {
               className="block h-24 w-auto object-contain"
             />
           </NavLink>
-          <div className='flex items-center gap-6 '>
+
+          {/* Desktop: nav links + CTA */}
+          <div className="hidden lg:flex items-center gap-6">
             <ul className="flex list-none m-0 p-0 gap-7 flex-wrap text-[16.5px]">
               {navItems.map(({ to, label }) => (
                 <li key={to}>
                   <NavLink
                     to={to}
                     className={({ isActive }) =>
-                      `no-underline text-[var(--dark-text-color)] hover:text-[var(--primary-color)] transition-colors font-medium ${isActive ? '!text-[var(--primary-color)]' : ''
-                      }`
+                      `no-underline text-[var(--dark-text-color)] hover:text-[var(--primary-color)] transition-colors font-medium ${isActive ? '!text-[var(--primary-color)]' : ''}`
                     }
                   >
                     {label}
@@ -61,7 +67,46 @@ export default function Layout() {
               Download MotoTagz App
             </a>
           </div>
+
+          {/* Mobile: bars button */}
+          <button
+            type="button"
+            className="lg:hidden w-10 h-10 flex items-center justify-center text-[var(--dark-text-color)] hover:text-[var(--primary-color)] transition-colors"
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+            aria-label="Toggle menu"
+            aria-expanded={isMenuOpen}
+          >
+            <FontAwesomeIcon icon={faBars} className="text-2xl" aria-hidden />
+          </button>
         </nav>
+
+        {/* Mobile menu panel */}
+        {isMenuOpen && (
+          <div className="lg:hidden bg-white border-t border-black/10 px-4 sm:px-6 py-6">
+            <ul className="flex flex-col list-none m-0 p-0 gap-4">
+              {navItems.map(({ to, label }) => (
+                <li key={to}>
+                  <NavLink
+                    to={to}
+                    className={({ isActive }) =>
+                      `block no-underline text-[var(--dark-text-color)] hover:text-[var(--primary-color)] transition-colors font-medium py-1 ${isActive ? '!text-[var(--primary-color)]' : ''}`
+                    }
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {label}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+            <a
+              href="#download"
+              className="mt-6 block w-full text-center bg-[var(--primary-color)] text-[var(--primary-button-text-color)] px-6 py-3 rounded-lg hover:bg-[var(--primary-button-hover-bg-color)] transition-all font-semibold shadow-md"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Download MotoTagz App
+            </a>
+          </div>
+        )}
       </header>
       <Outlet />
       <footer id="global-footer" className="code-section bg-[var(--dark-background-color)] text-white pt-16 pb-8 mt-auto">
