@@ -69,7 +69,7 @@ export default function Layout() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
             <div>
               <a href="/" className="inline-block mb-6">
-                <img src="/img/logo.jfif" alt="MotoTagz LLC" className="h-28 py-2 w-auto object-contain" />
+                <img src="/logo.png" alt="MotoTagz LLC" className="h-28 py-2 w-auto object-contain" />
               </a>
               <p className="text-gray-300 leading-relaxed mb-6">
                 First-of-its-kind motorcycle crash detection and emergency response
